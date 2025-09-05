@@ -35,7 +35,7 @@ export default function ProductForm({ onAdd }: Props) {
                 onChange={(e) => setName(e.target.value)}
             />
             <Input
-                placeholder="Giá"
+                placeholder="Giá (đ)"
                 type="number"
                 value={price ?? ''}
                 onChange={(e) => setPrice(Number(e.target.value))}

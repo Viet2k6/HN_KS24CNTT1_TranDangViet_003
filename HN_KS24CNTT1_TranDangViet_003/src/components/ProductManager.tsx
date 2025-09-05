@@ -1,11 +1,11 @@
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import { Card, Typography } from 'antd';
 import Header from './Header';
 import ProductFormCard from './ProductFormCard';
 import ProductTable from './ProductTable';
 import CustomPagination from './Pagination';
 import type { Product } from '../types/product';
-import { saveProducts, loadProducts } from '../types/storage';
+
 
 const { Title } = Typography;
 
@@ -14,13 +14,7 @@ export default function ProductManager() {
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize, setPageSize] = useState(3);
 
-    useEffect(() => {
-        setProducts(loadProducts());
-    }, []);
-
-    useEffect(() => {
-        saveProducts(products);
-    }, [products]);
+   
 
     const addProduct = (product: Product) => {
         setProducts([...products, product]);
@@ -49,7 +43,7 @@ export default function ProductManager() {
         <div style={{padding: 20}}>
             <ProductFormCard onAdd={addProduct}/>
             <Card>
-                <Title level={4}>Danh Sách Sản Phẩm</Title>
+                <Title style={{textAlign: 'center'}} level={4}>Danh Sách Sản Phẩm</Title>
                 <ProductTable products={paginationProducts} onToggle={toggleProduct} onDelete={deleteProduct} />
                 <div style ={{marginTop: 8, textAlign: 'right'}}>
                     <span>Tổng: {products.length} sản phẩm</span>
